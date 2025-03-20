@@ -17,15 +17,17 @@ function App() {
   const [backendData, setBackendData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5173/api')
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api`)
       .then(response => {
         setBackendData(response.data);
-        console.log(response.data); // Log data to check if it's fetched correctly
+        console.log(response.data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
   }, []);
+  
+  
 
   return (
     <Router>
